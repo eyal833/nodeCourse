@@ -1,0 +1,22 @@
+{
+  "name": "eyal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyal833/nodeCourse.git"
+  },
+  "author": "eyal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eyal833/nodeCourse/issues"
+  },
+  "homepage": "https://github.com/eyal833/nodeCourse#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
