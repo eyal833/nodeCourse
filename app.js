@@ -1,12 +1,13 @@
 const express = require('express');
+const config = require('config');
 const notFound = require('./middlewares/notFound');
 const errorHandler = require('./middlewares/error');
 const guestsRouter = require('./routes/guestsRouter');
 const usersRouter = require('./routes/usersRouter');
 const githubRouter = require('./routes/githubRouter');
 const app = express();
-const port = 3000;
-const host = 'localhost';
+const port = config.get('app.port');
+const host = config.get('app.host');
 
 app.use(express.json());
 app.use('/', guestsRouter);
