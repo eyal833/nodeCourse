@@ -1,13 +1,9 @@
 const express = require('express');
-const githubRouter = express.Router();
+const router = express.Router()
 
-// Define routes for the '/github' path
-githubRouter.get('/', (req, res) => {
-  res.send('GET /github');
-});
+const auth = require('../middlewares/auth');
 
-githubRouter.get('/callback', (req, res) => {
-    res.send('GET /github/callback');
-});
+router.get('/', auth.authenticate('github', { scope: [ 'user:email' ] })); 
+router.get('/callback', auth.authenticate('github', { failureRedirect: '/welcome', successRedirect: '/dashboard' }))
 
-module.exports = githubRouter;
+module.exports = router;

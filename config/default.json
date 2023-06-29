@@ -17,8 +17,11 @@
   },
   "github": {
     "client": {
-      "id": "someId",
-      "secret": "someSecret"
+      "id": "952c346c020c95330e72",
+      "secret": "1b747b748f25b3bc4f81d0547bb03b99cd5f5777"
     }
+  },
+  "worker": {
+    "interval": 10000
   }
 }

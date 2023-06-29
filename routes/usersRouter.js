@@ -1,17 +1,24 @@
 const express = require('express');
 const usersRouter = express.Router();
+const passport = require('passport');
+const { welcome, dashboard, logout, addSymbol,} = require('../controllers/users/users.controller');
+const { middleware: db } = require('../middlewares/db');
+const mongo = require('../middlewares/mongo');
 
-usersRouter.get('/dashboard', (req, res) => {
-    res.send('GET /dashboard');
-});
 
-usersRouter.get('/logout', (req, res) => {
-    res.send('GET /logout');
-});
+const { addSymbolValidator } = require('../controllers/users/users.validators');
+const enforeAuth = require('../middlewares/enforce-auth');
+const enforceGuest = require('../middlewares/enforce-guest');
+const joi = require('../middlewares/joi');
 
-usersRouter.post('/symbol', (req, res) => {
-    res.send('POST /symbol');
-});
+
+usersRouter.use(db);
+usersRouter.use(mongo);
+usersRouter.get('/welcome', enforceGuest, welcome);
+usersRouter.get('/dashboard', enforeAuth, dashboard);
+usersRouter.get('/logout', enforeAuth, logout);
+
+usersRouter.post('/symbol', enforeAuth, addSymbol);
 
 
 
