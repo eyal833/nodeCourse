@@ -1,0 +1,29 @@
+<head>
+    Dashboard
+</head>
+
+<form method="POST" action="/symbol">
+    <input type="text" name="symbol" placeholder="new symbol?">
+    <button type="submit">Submit</button>
+</form>
+
+<table>
+    <tr>
+        <td>Symbol</td>
+        <td>Value</td>
+    </tr>
+    <% userSymbols.forEach((userSymbol) => { %>
+        <tr>
+            <td><%=userSymbol.symbol%></td>
+            <td id="<%= userSymbol.symbol %>-value"><%=symbolValues.find((symbolValue) => symbolValue.symbol === userSymbol.symbol).value%></td>
+        </tr>
+
+    <% }) %>
+</table>
+
+<script>
+    const updateSymbolValue = (symbol, value) => {
+        document.getElementById(`${symbol}-value`).innerHTML = value; 
+    } 
+</script>
+<a href="/logout">logout</a>
